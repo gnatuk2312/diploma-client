@@ -5,8 +5,6 @@ import {
   transformResponseInterceptor,
 } from "./interceptors";
 
-console.log("process.env.API_URL >>", process.env.NEXT_PUBLIC_API_URL);
-
 const baseAxiosInstance = axios.create({
   baseURL: process.env.NEXT_PUBLIC_API_URL,
   timeout: 10000,

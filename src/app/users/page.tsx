@@ -9,7 +9,7 @@ import {
   Typography,
 } from "@mui/material";
 
-import { getAllUsersRequest } from "@/services/api/user.api";
+import { getAllUsersRequest } from "@/services/api/user/user.api";
 import { UserInterface } from "@/interfaces/models.interface";
 
 const Home = () => {
