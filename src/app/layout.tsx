@@ -5,6 +5,8 @@ import { AppRouterCacheProvider } from "@mui/material-nextjs/v15-appRouter";
 import { ThemeProvider } from "@mui/material/styles";
 
 import theme from "@/config/mui/theme";
+import Navigation from "@/components/navigation";
+import Footer from "@/components/footer";
 
 export const metadata: Metadata = {
   title: "Ukraine Logistic",
@@ -29,7 +31,11 @@ const RootLayout: FC<Props> = (props) => {
     <html lang="en">
       <body className={roboto.variable}>
         <AppRouterCacheProvider>
-          <ThemeProvider theme={theme}>{children}</ThemeProvider>
+          <ThemeProvider theme={theme}>
+            <Navigation />
+            {children}
+            <Footer />
+          </ThemeProvider>
         </AppRouterCacheProvider>
       </body>
     </html>
