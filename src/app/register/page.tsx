@@ -1,6 +1,7 @@
 "use client";
 
 import { FC } from "react";
+import { useRouter } from "next/navigation";
 import {
   Box,
   TextField,
@@ -13,7 +14,8 @@ import { useForm, Controller } from "react-hook-form";
 
 import { signUpRequest } from "@/services/api/auth/auth.api";
 import { UserRole } from "@/enums/user.enum";
-import { redirect } from "next/navigation";
+import { useSnackbar } from "@/config/mui/snackbar";
+import { AxiosErrorDataInterface } from "@/config/axios/axios.types";
 
 interface RegisterFormInterface {
   username: string;
@@ -23,14 +25,21 @@ interface RegisterFormInterface {
 
 const Register: FC = () => {
   const { control, handleSubmit } = useForm<RegisterFormInterface>();
+  const { showSnackbar } = useSnackbar();
+  const { push } = useRouter();
 
   const onSubmit = async (data: RegisterFormInterface) => {
     try {
       const auth = await signUpRequest({ body: data }); // TODO: open a snackbar to show success
 
-      if (auth) redirect("/");
+      if (auth) {
+        showSnackbar("Account created successfully", "success");
+        push("/");
+      }
     } catch (error) {
-      console.log("error >>", error); // TODO: open a snackbar to show error
+      const { message } = error as AxiosErrorDataInterface;
+
+      showSnackbar(message, "info");
     }
   };
 

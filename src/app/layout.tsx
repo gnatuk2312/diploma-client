@@ -5,6 +5,7 @@ import { AppRouterCacheProvider } from "@mui/material-nextjs/v15-appRouter";
 import { ThemeProvider } from "@mui/material/styles";
 
 import theme from "@/config/mui/theme";
+import SnackbarProvider from "@/config/mui/snackbar";
 import Navigation from "@/components/navigation";
 import Footer from "@/components/footer";
 
@@ -32,9 +33,11 @@ const RootLayout: FC<Props> = (props) => {
       <body className={roboto.variable}>
         <AppRouterCacheProvider>
           <ThemeProvider theme={theme}>
-            <Navigation />
-            {children}
-            <Footer />
+            <SnackbarProvider>
+              <Navigation />
+              {children}
+              <Footer />
+            </SnackbarProvider>
           </ThemeProvider>
         </AppRouterCacheProvider>
       </body>

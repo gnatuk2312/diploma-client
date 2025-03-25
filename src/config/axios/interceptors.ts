@@ -1,5 +1,7 @@
 import { InternalAxiosRequestConfig, AxiosError, AxiosResponse } from "axios";
 
+import { AxiosErrorDataInterface } from "./axios.types";
+
 export const setAuthorizationHeaderRequestInterceptor = (
   config: InternalAxiosRequestConfig<any>
 ): InternalAxiosRequestConfig<any> => {
@@ -17,5 +19,5 @@ export const transformResponseInterceptor = (response: AxiosResponse): any => {
 };
 
 export const transformErrorInterceptor = (error: AxiosError): any => {
-  throw error.response?.data;
+  throw error.response?.data as AxiosErrorDataInterface;
 };
