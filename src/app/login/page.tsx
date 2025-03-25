@@ -8,6 +8,7 @@ import { useForm, Controller } from "react-hook-form";
 import { signInRequest } from "@/services/api/auth/auth.api";
 import { useSnackbar } from "@/config/mui/snackbar";
 import { AxiosErrorDataInterface } from "@/config/axios/axios.types";
+import { useAuth } from "@/config/auth";
 
 interface LoginFormInterface {
   username: string;
@@ -17,6 +18,7 @@ interface LoginFormInterface {
 const Login: FC = () => {
   const { control, handleSubmit } = useForm<LoginFormInterface>();
   const { showSnackbar } = useSnackbar();
+  const { setAuth } = useAuth();
   const { push } = useRouter();
 
   const onSubmit = async (data: LoginFormInterface) => {
@@ -24,6 +26,7 @@ const Login: FC = () => {
       const auth = await signInRequest({ body: data });
 
       if (auth) {
+        setAuth(auth);
         showSnackbar("Login successful", "success");
         push(`/${auth.user.role.toLowerCase()}`);
       }

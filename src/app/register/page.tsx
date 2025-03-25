@@ -16,6 +16,7 @@ import { signUpRequest } from "@/services/api/auth/auth.api";
 import { UserRole } from "@/enums/user.enum";
 import { useSnackbar } from "@/config/mui/snackbar";
 import { AxiosErrorDataInterface } from "@/config/axios/axios.types";
+import { useAuth } from "@/config/auth";
 
 interface RegisterFormInterface {
   username: string;
@@ -26,13 +27,15 @@ interface RegisterFormInterface {
 const Register: FC = () => {
   const { control, handleSubmit } = useForm<RegisterFormInterface>();
   const { showSnackbar } = useSnackbar();
+  const { setAuth } = useAuth();
   const { push } = useRouter();
 
   const onSubmit = async (data: RegisterFormInterface) => {
     try {
-      const auth = await signUpRequest({ body: data }); // TODO: open a snackbar to show success
+      const auth = await signUpRequest({ body: data });
 
       if (auth) {
+        setAuth(auth);
         showSnackbar("Account created successfully", "success");
         push("/");
       }
