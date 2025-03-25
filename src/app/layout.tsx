@@ -9,6 +9,7 @@ import SnackbarProvider from "@/config/mui/snackbar";
 import Navigation from "@/components/navigation";
 import Footer from "@/components/footer";
 import AuthProvider from "@/config/auth";
+import { Box } from "@mui/material";
 
 export const metadata: Metadata = {
   title: "Ukraine Logistic",
@@ -31,14 +32,21 @@ const RootLayout: FC<Props> = (props) => {
 
   return (
     <html lang="en">
-      <body className={roboto.variable}>
+      <body className={roboto.variable} style={{ margin: 0 }}>
         <AppRouterCacheProvider>
           <ThemeProvider theme={theme}>
             <AuthProvider>
               <SnackbarProvider>
-                <Navigation />
-                {children}
-                <Footer />
+                <Box
+                  component="main"
+                  display="flex"
+                  flexDirection="column"
+                  minHeight="100vh"
+                >
+                  <Navigation />
+                  <Box flex={1}>{children}</Box>
+                  <Footer />
+                </Box>
               </SnackbarProvider>
             </AuthProvider>
           </ThemeProvider>
