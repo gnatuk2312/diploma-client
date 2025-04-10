@@ -1,10 +1,11 @@
-import axios from "@/config/axios/base-instance";
+import axios from "axios";
+import baseInstance from "@/config/axios/base-instance";
 
 import { FileInterface } from "@/interfaces/models.interface";
 import { UploadFileArgumentsInterface } from "./file.types";
 
 export const getAllFilesRequest = (): Promise<FileInterface[]> => {
-  return axios.get("/files");
+  return baseInstance.get("/files");
 };
 
 export const uploadFileRequest = (
