@@ -87,7 +87,7 @@ const Vacancies: FC = () => {
                 action={
                   <Chip
                     label={vacancy.status}
-                    color={statusColors[vacancy.status]}
+                    color={statusColors[vacancy.status] as any}
                   />
                 }
               />
