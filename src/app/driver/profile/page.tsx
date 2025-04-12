@@ -20,6 +20,7 @@ import {
   updateDriverDetailsRequest,
 } from "@/services/api/driver-details/driver-details.api";
 import { uploadFileRequest } from "@/services/api/file/file.api";
+import Link from "next/link";
 
 export interface DriverDetailsInterface {
   id: string;
@@ -145,9 +146,17 @@ const DriverProfile: FC = () => {
 
   return (
     <Container maxWidth="sm" sx={{ mt: 4 }}>
-      <Typography variant="h4" sx={{ mb: 8 }}>
-        Edit your driver profile
-      </Typography>
+      <Box
+        display="flex"
+        justifyContent="space-between"
+        alignItems="center"
+        sx={{ mb: 8 }}
+      >
+        <Typography variant="h4">Edit your driver profile</Typography>
+        <Button component={Link} href={`/driver/profile/${user?.id}`}>
+          Preview my profile
+        </Button>
+      </Box>
       <Box
         component="form"
         onSubmit={handleSubmit(onSubmit)}
