@@ -129,7 +129,7 @@ const Vacancies: FC = () => {
                   component={Link}
                   href={`/logist/vacancy/${vacancy.id}`}
                 >
-                  Details
+                  Details and Offers
                 </Button>
               </CardActions>
             </Card>
