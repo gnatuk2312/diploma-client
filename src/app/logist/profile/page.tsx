@@ -17,6 +17,7 @@ import {
 } from "@/services/api/logist-details/logist-details.api";
 import { useAuth } from "@/config/auth";
 import { useSnackbar } from "@/config/mui/snackbar";
+import Link from "next/link";
 
 export interface LogistDetailsInterface {
   id: string;
@@ -99,9 +100,17 @@ const Profile: FC = () => {
 
   return (
     <Container maxWidth="sm" sx={{ mt: 4 }}>
-      <Typography variant="h4" sx={{ mb: 8 }}>
-        Edit your profile
-      </Typography>
+      <Box
+        display="flex"
+        justifyContent="space-between"
+        alignItems="center"
+        sx={{ mb: 8 }}
+      >
+        <Typography variant="h4">Edit your profile</Typography>
+        <Button component={Link} href={`/logist/profile/${user?.id}`}>
+          Preview my profile
+        </Button>
+      </Box>
       <Box
         component="form"
         onSubmit={handleSubmit(onSubmit)}
