@@ -27,7 +27,7 @@ const Login: FC = () => {
 
       if (auth) {
         setAuth(auth);
-        showSnackbar("Login successful", "success");
+        showSnackbar("Успішно!", "success");
         push(`/${auth.user.role.toLowerCase()}`);
       }
     } catch (error) {
@@ -39,7 +39,7 @@ const Login: FC = () => {
   return (
     <Container sx={{ mt: 8 }}>
       <Typography variant="h5" align="center">
-        Login to your account
+        Увійдіть у свій аккаунт
       </Typography>
       <Box
         component="form"
@@ -60,7 +60,7 @@ const Login: FC = () => {
           render={({ field }) => (
             <TextField
               {...field}
-              label="Username"
+              label="Ім'я на платформі"
               fullWidth
               margin="normal"
               required
@@ -74,7 +74,7 @@ const Login: FC = () => {
           render={({ field }) => (
             <TextField
               {...field}
-              label="Password"
+              label="Пароль"
               type="password"
               fullWidth
               margin="normal"
@@ -83,7 +83,7 @@ const Login: FC = () => {
           )}
         />
         <Button type="submit" variant="contained" fullWidth sx={{ mt: 2 }}>
-          Login
+          Увійти
         </Button>
       </Box>
     </Container>

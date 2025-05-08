@@ -35,7 +35,7 @@ const DriversPage: FC = () => {
   return (
     <Box maxWidth="sm" mx="auto" mt={5}>
       <Typography variant="h4" textAlign="center" mb={4}>
-        Drivers List
+        Список водіїв
       </Typography>
 
       <Stack spacing={2}>
@@ -49,18 +49,18 @@ const DriversPage: FC = () => {
             </CardContent>
             <CardActions>
               <Button
-                variant="contained"
+                variant="outlined"
                 color="primary"
                 href={`/driver/profile/${user.id}`}
               >
-                View Profile
+                Переглянути профіль
               </Button>
             </CardActions>
           </Card>
         ))}
 
         {drivers.length === 0 && (
-          <Typography textAlign="center">No drivers found.</Typography>
+          <Typography textAlign="center">На платформі немає водіїв</Typography>
         )}
       </Stack>
     </Box>

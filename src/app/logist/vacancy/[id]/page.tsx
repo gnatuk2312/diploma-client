@@ -66,7 +66,7 @@ const PreviewVacancyOffers: FC<Props> = (props) => {
             : offer
         )
       );
-      showSnackbar("You have successfully accepted this offer", "success");
+      showSnackbar("Пропозиція успішно прийнята!", "success");
     } catch (e) {
       console.error("Error accepting offer", e);
     }
@@ -80,7 +80,7 @@ const PreviewVacancyOffers: FC<Props> = (props) => {
     return (
       <Box mt={5} textAlign="center">
         <Typography variant="h5" color="textSecondary">
-          You have no offers for this vacancy yet
+          У вас немає пропозицій від водіїв для цієї вакансії
         </Typography>
       </Box>
     );
@@ -89,7 +89,7 @@ const PreviewVacancyOffers: FC<Props> = (props) => {
   return (
     <Box maxWidth="md" mx="auto" mt={5}>
       <Typography variant="h4" textAlign="center" sx={{ mb: 8 }}>
-        Offers for Vacancy
+        Пропозиції від водіїв
       </Typography>
 
       <Stack spacing={3}>
@@ -99,7 +99,7 @@ const PreviewVacancyOffers: FC<Props> = (props) => {
               <Stack direction="row" alignItems="center" spacing={1} mb={1}>
                 <CommentIcon color="primary" />
                 <Typography>
-                  {offer.comment || "No comment provided"}
+                  {offer.comment || "*Коментар не додано"}
                 </Typography>
               </Stack>
 
@@ -111,13 +111,14 @@ const PreviewVacancyOffers: FC<Props> = (props) => {
               <Stack direction="row" alignItems="center" spacing={1}>
                 <AccessTimeIcon color="primary" />
                 <Typography>
-                  Sent: {new Date(offer.createdAt).toLocaleString()}
+                  Створено: {new Date(offer.createdAt).toLocaleString()}
                 </Typography>
               </Stack>
 
               {offer.acceptedAt && (
                 <Typography color="success.main" mt={1}>
-                  ✅ Accepted at: {new Date(offer.acceptedAt).toLocaleString()}
+                  ✅ Ви прийняли пропозицію:{" "}
+                  {new Date(offer.acceptedAt).toLocaleString()}
                 </Typography>
               )}
             </CardContent>
@@ -131,14 +132,14 @@ const PreviewVacancyOffers: FC<Props> = (props) => {
                     setOpenModal(true);
                   }}
                 >
-                  Accept
+                  Прийняти
                 </Button>
               )}
               <Button
                 component={Link}
                 href={`/driver/profile/${offer?.creator?.id}`}
               >
-                Preview driver&apos;s profile
+                Переглянути профіль водія
               </Button>
             </CardActions>
           </Card>
@@ -147,26 +148,24 @@ const PreviewVacancyOffers: FC<Props> = (props) => {
 
       {/* Modal */}
       <Dialog open={openModal} onClose={() => setOpenModal(false)}>
-        <DialogTitle>Confirm Acceptance</DialogTitle>
+        <DialogTitle>Підтвердити прийняття пропозиції</DialogTitle>
         <DialogContent>
-          <Typography mb={2}>
-            Are you sure you want to accept this offer?
-          </Typography>
+          <Typography mb={2}>Ви впевнені?</Typography>
           {selectedOffer && (
             <Stack spacing={1}>
               <Typography>
-                <strong>Comment:</strong> {selectedOffer.comment || "None"}
+                <strong>Коментар:</strong> {selectedOffer.comment || "None"}
               </Typography>
               <Typography>
-                <strong>Creator:</strong> {selectedOffer.creator.username}
+                <strong>Водій:</strong> {selectedOffer.creator.username}
               </Typography>
             </Stack>
           )}
         </DialogContent>
         <DialogActions>
-          <Button onClick={() => setOpenModal(false)}>No</Button>
+          <Button onClick={() => setOpenModal(false)}>Скасувати</Button>
           <Button onClick={handleAccept} variant="contained" color="primary">
-            Yes
+            Прийняти
           </Button>
         </DialogActions>
       </Dialog>

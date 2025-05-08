@@ -64,7 +64,7 @@ const VacanciesPage: FC = () => {
       });
       reset();
       setOpen(false);
-      showSnackbar("Successfully applied for vacancy", "success");
+      showSnackbar("Ви успішно відгукнулись на вакансію!", "success");
     } catch (e) {
       console.error("Failed to create offer", e);
     }
@@ -77,7 +77,7 @@ const VacanciesPage: FC = () => {
   return (
     <Box maxWidth="md" mx="auto" mt={5}>
       <Typography variant="h4" gutterBottom textAlign="center">
-        Available Vacancies
+        Доступні вакансії (рейси)
       </Typography>
 
       <Grid container spacing={3} sx={{ my: 6 }}>
@@ -92,19 +92,19 @@ const VacanciesPage: FC = () => {
                 <Stack direction="row" alignItems="center" spacing={1} mb={1}>
                   <DescriptionIcon color="action" />
                   <Typography>
-                    {vacancy.description || "No description provided"}
+                    {vacancy.description || "Немає детального опису"}
                   </Typography>
                 </Stack>
 
                 <Stack direction="row" alignItems="center" spacing={1} mb={1}>
                   <MonetizationOnIcon color="action" />
-                  <Typography>UAH {vacancy.unitPrice / 100}</Typography>
+                  <Typography>{vacancy.unitPrice / 100}грн</Typography>
                 </Stack>
 
                 <Stack direction="row" alignItems="center" spacing={1} mb={1}>
                   <RoomIcon color="action" />
                   <Typography>
-                    From: {vacancy?.from?.country}, {vacancy?.from?.city},{" "}
+                    Звідки: {vacancy?.from?.country}, {vacancy?.from?.city},{" "}
                     {vacancy?.from?.street}
                   </Typography>
                 </Stack>
@@ -112,22 +112,20 @@ const VacanciesPage: FC = () => {
                 <Stack direction="row" alignItems="center" spacing={1} mb={1}>
                   <RoomIcon color="action" />
                   <Typography>
-                    To: {vacancy?.to?.country}, {vacancy?.to?.city},{" "}
+                    Куди: {vacancy?.to?.country}, {vacancy?.to?.city},{" "}
                     {vacancy?.to?.street}
                   </Typography>
                 </Stack>
 
                 <Stack direction="row" alignItems="center" spacing={1} mb={1}>
                   <PersonIcon color="action" />
-                  <Typography>
-                    Created by: {vacancy?.creator?.username}
-                  </Typography>
+                  <Typography>Логіст: {vacancy?.creator?.username}</Typography>
                 </Stack>
 
                 <Stack direction="row" alignItems="center" spacing={1}>
                   <AccessTimeIcon color="action" />
                   <Typography>
-                    Posted on: {new Date(vacancy.createdAt).toLocaleString()}
+                    Створено: {new Date(vacancy.createdAt).toLocaleString()}
                   </Typography>
                 </Stack>
               </CardContent>
@@ -138,7 +136,7 @@ const VacanciesPage: FC = () => {
                   variant="outlined"
                   size="small"
                 >
-                  View creator profile
+                  Профіль логіста
                 </Button>
 
                 {user && (
@@ -150,7 +148,7 @@ const VacanciesPage: FC = () => {
                       setOpen(true);
                     }}
                   >
-                    Apply for Vacancy
+                    Відгукнутись
                   </Button>
                 )}
               </CardActions>
@@ -166,7 +164,7 @@ const VacanciesPage: FC = () => {
         fullWidth
         maxWidth="sm"
       >
-        <DialogTitle>Apply to Vacancy</DialogTitle>
+        <DialogTitle>Відгукнутись на вакансію</DialogTitle>
         <form onSubmit={handleSubmit(onSubmit)}>
           <DialogContent>
             <Controller
@@ -177,7 +175,7 @@ const VacanciesPage: FC = () => {
                 <TextField
                   {...field}
                   fullWidth
-                  label="Comment"
+                  label="Коментар"
                   multiline
                   rows={4}
                   variant="outlined"
@@ -186,9 +184,9 @@ const VacanciesPage: FC = () => {
             />
           </DialogContent>
           <DialogActions>
-            <Button onClick={() => setOpen(false)}>Cancel</Button>
+            <Button onClick={() => setOpen(false)}>Закрити</Button>
             <Button type="submit" variant="contained" disabled={isSubmitting}>
-              Submit Offer
+              Відгукнутись
             </Button>
           </DialogActions>
         </form>

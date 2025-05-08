@@ -56,10 +56,8 @@ const DriverProfile: FC = () => {
     useState<DriverDetailsInterface | null>(null);
   const [uploading, setUploading] = useState(false);
   const [file, setFile] = useState<File | null>(null);
-  console.log(" file >>", file);
 
   const driverLicense = watch("driverLicense");
-  console.log(" driverLicense >>", driverLicense);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -93,7 +91,6 @@ const DriverProfile: FC = () => {
 
     const formData = new FormData();
     formData.append("file", file);
-    console.log(" handleUpload formData >>", formData);
 
     try {
       setUploading(true);
@@ -117,7 +114,7 @@ const DriverProfile: FC = () => {
         });
         setExistingDetails(created as any);
         reset(created);
-        showSnackbar("Profile created successfully", "success");
+        showSnackbar("Профіль успішно оновлено!", "success");
       } else {
         const updated = await updateDriverDetailsRequest({
           body: {
@@ -130,7 +127,7 @@ const DriverProfile: FC = () => {
         });
         setExistingDetails(updated as any);
         reset(updated);
-        showSnackbar("Profile updated successfully", "success");
+        showSnackbar("Профіль успішно оновлено!", "success");
       }
     } catch (error) {
       showSnackbar("Failed to save profile", "error");
@@ -147,15 +144,15 @@ const DriverProfile: FC = () => {
 
   return (
     <Container maxWidth="sm" sx={{ mt: 4 }}>
-      <Box
-        display="flex"
-        justifyContent="space-between"
-        alignItems="center"
-        sx={{ mb: 8 }}
-      >
-        <Typography variant="h4">Edit your driver profile</Typography>
-        <Button component={Link} href={`/driver/profile/${user?.id}`}>
-          Preview my profile
+      <Box sx={{ mb: 8 }}>
+        <Typography variant="h4">Оновіть ваш профіль</Typography>
+        <Button
+          variant="outlined"
+          sx={{ mt: 2 }}
+          component={Link}
+          href={`/driver/profile/${user?.id}`}
+        >
+          Переглянути профіль (як його бачать логісти)
         </Button>
       </Box>
       <Box
@@ -165,7 +162,11 @@ const DriverProfile: FC = () => {
         flexDirection="column"
         gap={2}
       >
-        <TextField label="Description" {...register("description")} fullWidth />
+        <TextField
+          label="Коротко про вас"
+          {...register("description")}
+          fullWidth
+        />
         <TextField
           label="Email"
           type="email"
@@ -173,7 +174,7 @@ const DriverProfile: FC = () => {
           fullWidth
         />
         <TextField
-          label="Phone Number"
+          label="Номер телефону"
           {...register("phoneNumber")}
           fullWidth
         />
@@ -200,7 +201,7 @@ const DriverProfile: FC = () => {
           Upload File
         </Button>
         <Button type="submit" variant="contained" disabled={!isDirty}>
-          Save
+          Зберегти
         </Button>
       </Box>
     </Container>

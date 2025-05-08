@@ -66,14 +66,14 @@ const Vacancies: FC = () => {
         }}
       >
         <Typography variant="h5" align="center">
-          Created by me
+          Створені мною вакансії
         </Typography>
         <Button
           variant="outlined"
           component={Link}
           href="/logist/create-vacancy"
         >
-          + Create new Vacancy
+          + Створити нову
         </Button>
       </Box>
       <Grid container spacing={3} padding={3}>
@@ -110,7 +110,7 @@ const Vacancies: FC = () => {
                   display="flex"
                   alignItems="center"
                 >
-                  <LocationOnIcon color="secondary" sx={{ mr: 1 }} /> From:{" "}
+                  <LocationOnIcon color="secondary" sx={{ mr: 1 }} /> Звідки:{" "}
                   {vacancy.from.city || "Unknown"}, {vacancy.from.country}
                 </Typography>
                 <Typography
@@ -118,7 +118,7 @@ const Vacancies: FC = () => {
                   display="flex"
                   alignItems="center"
                 >
-                  <LocationOnIcon color="secondary" sx={{ mr: 1 }} /> To:{" "}
+                  <LocationOnIcon color="secondary" sx={{ mr: 1 }} /> Куди:{" "}
                   {vacancy.to.city || "Unknown"}, {vacancy.to.country}
                 </Typography>
               </CardContent>
@@ -129,7 +129,7 @@ const Vacancies: FC = () => {
                   component={Link}
                   href={`/logist/vacancy/${vacancy.id}`}
                 >
-                  Details and Offers
+                  Деталі та Пропозиції від водіїв
                 </Button>
               </CardActions>
             </Card>

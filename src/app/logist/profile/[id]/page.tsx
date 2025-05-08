@@ -56,9 +56,7 @@ const PreviewProfile: FC<Props> = (props) => {
   if (error || !profile) {
     return (
       <Box mt={10} textAlign="center">
-        <Typography variant="h5">
-          Logist has not created a profile yet
-        </Typography>
+        <Typography variant="h5">Логіст покищо не має профілю</Typography>
       </Box>
     );
   }
@@ -66,7 +64,7 @@ const PreviewProfile: FC<Props> = (props) => {
   return (
     <Box maxWidth={600} mx="auto" mt={5}>
       <Typography variant="h4" textAlign="center" sx={{ mb: 8 }}>
-        Logist Public Profile
+        Профіль логіста
       </Typography>
 
       <Paper elevation={3} sx={{ p: 4, borderRadius: 4 }}>

@@ -9,8 +9,8 @@ import { UseNavLinksReturnType } from "./useNavLinks.types";
 const useNavLinks = (user: UserInterface | null): UseNavLinksReturnType => {
   if (user === null) {
     return [
-      { label: "Login", href: "/login", Icon: () => <LoginIcon /> },
-      { label: "Register", href: "/register", Icon: () => <AddBoxIcon /> },
+      { label: "Логін", href: "/login", Icon: () => <LoginIcon /> },
+      { label: "Реєстрація", href: "/register", Icon: () => <AddBoxIcon /> },
     ];
   }
 
@@ -18,12 +18,12 @@ const useNavLinks = (user: UserInterface | null): UseNavLinksReturnType => {
 
   return [
     {
-      label: "Profile",
+      label: "Профіль",
       href: userRoleHref + "/profile",
       Icon: () => <AccountBoxIcon />,
     },
     {
-      label: "Vacancies",
+      label: "Вакансії",
       href: userRoleHref + "/vacancies",
       Icon: () => <WorkIcon />,
     },

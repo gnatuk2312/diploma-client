@@ -79,14 +79,14 @@ const Profile: FC = () => {
       });
       setExistingDetails(created);
       reset(created);
-      showSnackbar("Profile created successfully");
+      showSnackbar("Профіль успішно оновлено!");
     } else {
       const updated = await updateLogistDetailsRequest({
         body: { ...formData, id: existingDetails.id },
       });
       setExistingDetails(updated);
       reset(updated);
-      showSnackbar("Profile updated successfully");
+      showSnackbar("Профіль успішно оновлено!");
     }
   };
 
@@ -100,15 +100,16 @@ const Profile: FC = () => {
 
   return (
     <Container maxWidth="sm" sx={{ mt: 4 }}>
-      <Box
-        display="flex"
-        justifyContent="space-between"
-        alignItems="center"
-        sx={{ mb: 8 }}
-      >
-        <Typography variant="h4">Edit your profile</Typography>
-        <Button component={Link} href={`/logist/profile/${user?.id}`}>
-          Preview my profile
+      <Box sx={{ mb: 8 }}>
+        <Typography variant="h4" sx={{ mb: 2 }}>
+          Редагувати мій профіль
+        </Typography>
+        <Button
+          variant="outlined"
+          component={Link}
+          href={`/logist/profile/${user?.id}`}
+        >
+          Переглянути (як його бачать інші)
         </Button>
       </Box>
       <Box
@@ -119,7 +120,7 @@ const Profile: FC = () => {
         gap={2}
       >
         <TextField
-          label="Description"
+          label="Коротко про мене"
           {...register("description")}
           fullWidth
           required
@@ -132,13 +133,13 @@ const Profile: FC = () => {
           required
         />
         <TextField
-          label="Phone Number"
+          label="Номер телефону"
           {...register("phoneNumber")}
           fullWidth
           required
         />
         <Button type="submit" variant="contained" disabled={!isDirty}>
-          Save
+          Зберегти
         </Button>
       </Box>
     </Container>

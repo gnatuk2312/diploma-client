@@ -40,7 +40,7 @@ const Navigation = () => {
         }}
       >
         <Link
-          href={user ? `/${user.role.toLowerCase()}` : ""}
+          href={user ? `/${user.role.toLowerCase()}` : "/"}
           style={{ textDecoration: "none", color: "inherit" }}
         >
           <Typography
@@ -63,7 +63,7 @@ const Navigation = () => {
           }}
         >
           {navLinks.map(({ label, href }) => (
-            <Button key={label} color="inherit" component={Link} href={href}>
+            <Button key={label} variant="outlined" component={Link} href={href}>
               {label}
             </Button>
           ))}

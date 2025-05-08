@@ -33,7 +33,7 @@ const CreateVacancy: FC = () => {
       await createVacancyRequest({
         body: { ...data, unitPrice: data.unitPrice * 100, creatorId: user.id },
       });
-      showSnackbar("Vacancy created successfully", "success");
+      showSnackbar("Вакансію успішно створено!", "success");
       push("/" + user.role.toLowerCase() + "/vacancies");
     } catch (error) {
       const { message } = error as AxiosErrorDataInterface;
@@ -44,7 +44,7 @@ const CreateVacancy: FC = () => {
   return (
     <Container sx={{ mt: 8 }}>
       <Typography variant="h5" align="center">
-        Create Vacancy
+        Створити Вакансію
       </Typography>
       <Box
         component="form"
@@ -65,7 +65,7 @@ const CreateVacancy: FC = () => {
           render={({ field }) => (
             <TextField
               {...field}
-              label="Title"
+              label="Заголовок"
               fullWidth
               margin="normal"
               required
@@ -79,7 +79,7 @@ const CreateVacancy: FC = () => {
           render={({ field }) => (
             <TextField
               {...field}
-              label="Description"
+              label="Опис (оплата, вага, габарити вантажу)"
               fullWidth
               multiline
               rows={4}
@@ -95,7 +95,7 @@ const CreateVacancy: FC = () => {
           render={({ field }) => (
             <TextField
               {...field}
-              label="Unit Price (UAH)"
+              label="Фракт (грн)"
               type="number"
               fullWidth
               margin="normal"
@@ -108,7 +108,7 @@ const CreateVacancy: FC = () => {
           control={control}
           render={() => (
             <AddressAutocomplete
-              label="From"
+              label="Звідки"
               onSelect={(address) => setValue("from", address)}
             />
           )}
@@ -118,13 +118,13 @@ const CreateVacancy: FC = () => {
           control={control}
           render={() => (
             <AddressAutocomplete
-              label="To"
+              label="Куди"
               onSelect={(address) => setValue("to", address)}
             />
           )}
         />
         <Button type="submit" variant="contained" fullWidth sx={{ mt: 2 }}>
-          Create Vacancy
+          Створити
         </Button>
       </Box>
     </Container>

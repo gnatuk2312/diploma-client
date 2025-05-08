@@ -56,9 +56,7 @@ const PreviewDriverProfile: FC<Props> = (props) => {
   if (error || !profile) {
     return (
       <Box mt={10} textAlign="center">
-        <Typography variant="h5">
-          Driver has not created a profile yet
-        </Typography>
+        <Typography variant="h5">Водій ще не створив профіль</Typography>
       </Box>
     );
   }
@@ -66,7 +64,7 @@ const PreviewDriverProfile: FC<Props> = (props) => {
   return (
     <Box maxWidth={600} mx="auto" mt={5}>
       <Typography variant="h4" textAlign="center" sx={{ mb: 8 }}>
-        Driver Public Profile
+        Профіль водія
       </Typography>
 
       <Paper elevation={3} sx={{ p: 4, borderRadius: 4 }}>

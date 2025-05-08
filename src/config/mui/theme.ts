@@ -5,7 +5,11 @@ import { green, grey, red, yellow } from "@mui/material/colors";
 const theme = createTheme({
   cssVariables: true,
   palette: {
-    primary: green,
+    primary: {
+      main: green[800],
+      light: green[500],
+      dark: green[900],
+    },
     secondary: grey,
     error: red,
     warning: yellow,

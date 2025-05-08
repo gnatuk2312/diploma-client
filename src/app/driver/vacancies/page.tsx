@@ -101,36 +101,36 @@ const Vacancies: FC = () => {
           <Stack direction="row" spacing={1} alignItems="center">
             <AccessTimeIcon color="primary" />
             <Typography>
-              Created: {new Date(vacancy.createdAt).toLocaleString()}
+              Створено: {new Date(vacancy.createdAt).toLocaleString()}
             </Typography>
           </Stack>
 
           <Stack direction="row" spacing={1} alignItems="center">
             <MonetizationOnIcon color="primary" />
-            <Typography>Price: ${vacancy.unitPrice}</Typography>
+            <Typography>{vacancy.unitPrice / 100}грн</Typography>
           </Stack>
 
           <Stack direction="row" spacing={1} alignItems="center">
             <LocationOnIcon color="primary" />
             <Typography>
-              From: {vacancy.from.city}, {vacancy.from.street}
+              Звідки: {vacancy.from.city}, {vacancy.from.street}
             </Typography>
           </Stack>
 
           <Stack direction="row" spacing={1} alignItems="center">
             <LocationOnIcon color="error" />
             <Typography>
-              To: {vacancy.to.city}, {vacancy.to.street}
+              Куди: {vacancy.to.city}, {vacancy.to.street}
             </Typography>
           </Stack>
 
           <Stack direction="row" spacing={1} alignItems="center">
             <PersonIcon color="primary" />
-            <Typography>Created by: {vacancy.creator.username}</Typography>
+            <Typography>Логіст: {vacancy.creator.username}</Typography>
           </Stack>
 
           <Typography color="textSecondary">
-            Status: {vacancy.status}
+            Статус: {vacancy.status}
           </Typography>
         </Stack>
       </CardContent>
@@ -144,7 +144,7 @@ const Vacancies: FC = () => {
               setOpenModal(true);
             }}
           >
-            Mark as Delivered
+            Позначити доставленим
           </Button>
         </CardActions>
       )}
@@ -158,18 +158,18 @@ const Vacancies: FC = () => {
   return (
     <Box maxWidth="md" mx="auto" my={5}>
       <Typography variant="h4" textAlign="center" mb={4}>
-        Your Vacancies
+        Вакансії, на які ви подались
       </Typography>
 
       {/* IN PROGRESS */}
       <Box mt={6}>
         <Typography variant="h5" mb={2}>
-          In Progress
+          Вас обрали водієм (в процессі виконання)
         </Typography>
         <Stack spacing={3}>
           {inProgressVacancies.map((v) => renderVacancyCard(v, true))}
           {inProgressVacancies.length === 0 && (
-            <Typography>No in-progress vacancies.</Typography>
+            <Typography>Немає таких вакансій</Typography>
           )}
         </Stack>
       </Box>
@@ -177,12 +177,12 @@ const Vacancies: FC = () => {
       {/* APPLIED */}
       <Box mt={4}>
         <Typography variant="h5" mb={2}>
-          Applied
+          Подались (чекаємо відповідь клієнта)
         </Typography>
         <Stack spacing={3}>
           {appliedVacancies.map((v) => renderVacancyCard(v))}
           {appliedVacancies.length === 0 && (
-            <Typography>No applied vacancies yet.</Typography>
+            <Typography>Немає таких вакансій</Typography>
           )}
         </Stack>
       </Box>
@@ -190,28 +190,28 @@ const Vacancies: FC = () => {
       {/* DELIVERED */}
       <Box mt={6}>
         <Typography variant="h5" mb={2}>
-          Delivered
+          Доставлено (старі рейси)
         </Typography>
         <Stack spacing={3}>
           {deliveredVacancies.map((v) => renderVacancyCard(v))}
           {deliveredVacancies.length === 0 && (
-            <Typography>No delivered vacancies yet.</Typography>
+            <Typography>Немає таких вакансій</Typography>
           )}
         </Stack>
       </Box>
 
       {/* Modal */}
       <Dialog open={openModal} onClose={() => setOpenModal(false)}>
-        <DialogTitle>Confirm Delivery</DialogTitle>
+        <DialogTitle>Підтвердити доставку</DialogTitle>
         <DialogContent>
           <Typography>
-            Are you sure you want to mark this vacancy as delivered?
+            Ви впевнені що хочете позначити вакансію як виконану?
           </Typography>
         </DialogContent>
         <DialogActions>
-          <Button onClick={() => setOpenModal(false)}>No</Button>
+          <Button onClick={() => setOpenModal(false)}>Ні</Button>
           <Button variant="contained" onClick={handleMarkDelivered}>
-            Yes
+            Так
           </Button>
         </DialogActions>
       </Dialog>

@@ -36,7 +36,7 @@ const Register: FC = () => {
 
       if (auth) {
         setAuth(auth);
-        showSnackbar("Account created successfully", "success");
+        showSnackbar("Аккаунт створено!", "success");
         push("/");
       }
     } catch (error) {
@@ -49,7 +49,7 @@ const Register: FC = () => {
   return (
     <Container sx={{ mt: 8 }}>
       <Typography variant="h5" align="center">
-        Create an account
+        Створити новий аккаунт
       </Typography>
       <Box
         component="form"
@@ -70,7 +70,7 @@ const Register: FC = () => {
           render={({ field }) => (
             <TextField
               {...field}
-              label="Username"
+              label="Ім'я на платформі (унікальне)"
               fullWidth
               margin="normal"
               required
@@ -84,7 +84,7 @@ const Register: FC = () => {
           render={({ field }) => (
             <TextField
               {...field}
-              label="Password"
+              label="Пароль"
               type="password"
               fullWidth
               margin="normal"
@@ -99,19 +99,19 @@ const Register: FC = () => {
           render={({ field }) => (
             <TextField
               {...field}
-              label="Role"
+              label="Роль"
               select
               fullWidth
               margin="normal"
               required
             >
-              <MenuItem value={UserRole.DRIVER}>Driver</MenuItem>
-              <MenuItem value={UserRole.LOGIST}>Logist</MenuItem>
+              <MenuItem value={UserRole.DRIVER}>Водій</MenuItem>
+              <MenuItem value={UserRole.LOGIST}>Логіст</MenuItem>
             </TextField>
           )}
         />
         <Button type="submit" variant="contained" fullWidth sx={{ mt: 2 }}>
-          Register
+          Створити
         </Button>
       </Box>
     </Container>
